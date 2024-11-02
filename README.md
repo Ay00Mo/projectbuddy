@@ -4,7 +4,8 @@
 
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
-| name               | string | null: false |
+| last_name          | string | null: false |
+| first_name         | string | null: false |
 | email              | string | null: false, unique: true |
 | encrypted_password | string | null: false |
 | pin_number         | string | null: false |
@@ -25,6 +26,7 @@
 | law_category_id    | integer| null: false |
 | category_id        | integer| null: false |
 | status_id          | integer| null: false |
+| beginning_date     | date   | null: false |
 | deadline           | date   | null: false |
 | absolute_deadline  | date   | null: false |
 | request_date       | date   |             |
