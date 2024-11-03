@@ -1,0 +1,79 @@
+<%= render "shared/header" %>
+<div class='main'>
+
+  <%# ProjectBuddyの機能 %>
+  <div class='select-reason-contents'>
+    <h2 class='title'>
+      ProjectBuddyの機能
+    </h2>
+    <ul class='reason-lists'>
+      <li class='list'>
+        <%= image_tag "furima-intro01.png", class:"list-pict" %>
+        <span class='reason-list-number'>1</span>
+        <h3 class='reason-list-text'>
+          <span class='reason-list-blue-text'>案件登録</span>
+        </h3>
+        <p class='reason-list-description'>
+          フォームで簡単に入力！
+        </p>
+      </li>
+      <li class='list'>
+        <%= image_tag "furima-intro02.png", class:"list-pict" %>
+        <span class='reason-list-number'>2</span>
+        <h3 class='reason-list-text'>
+          <span class='reason-list-blue-text'>マイページ</span>
+        </h3>
+        <p class='reason-list-description'>
+          自分の案件を一覧で確認！
+        </p>
+      </li>
+      <li class='list'>
+        <%= image_tag "furima-intro03.png", class:"list-pict" %>
+        <span class='reason-list-number'>3</span>
+        <h3 class='reason-list-text'>
+          <span class='reason-list-blue-text'>案件詳細検索</span>
+        </h3>
+        <p class='reason-list-description'>
+          様々な項目で案件を検索！
+        </p>
+      </li>
+    </ul>
+  </div>
+  <%# /ProjectBuddyの機能の説明部分 %>
+
+  <%# 本日期限一覧 %>
+  <div class='item-contents'>
+    <h2 class='title'>本日期限一覧</h2>
+    <div class="subtitle" >
+      要対応
+    </div>
+    <ul class='item-lists'>
+
+      <%# 担当者に関わらず本日期限を一覧で表示 %>
+      <%# //担当者に関わらず本日期限を一覧で表示 %>
+
+    </ul>
+  </div>
+  <%# /本日期限一覧 %>
+</div>
+<%= link_to('#', class: 'case-register-btn') do %>
+  <span class='case-register-btn-text'>案件登録</span>
+  <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
+<% end %>
+<%= link_to('#', class: 'contact-register-btn') do %>
+  <span class='contact-register-btn-text'>担当者登録</span>
+  <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
+<% end %>
+<%= link_to('#', class: 'applicant-register-btn') do %>
+  <span class='applicant-register-btn-text'>出願人者登録</span>
+  <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
+<% end %>
+<%= link_to('#', class: 'attorney-firm-register-btn') do %>
+  <span class='attorney-firm-register-btn-text'>代理人者登録</span>
+  <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
+<% end %>
+<%= link_to('#', class: 'procedure-register-btn') do %>
+  <span class='procedure-register-btn-text'>内容登録</span>
+  <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
+<% end %>
+<%= render "shared/footer" %>
