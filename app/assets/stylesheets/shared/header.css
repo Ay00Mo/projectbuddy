@@ -65,7 +65,7 @@
   padding: 0;
 }
 
-.user-nickname, .logout, .login, .sign-up {
+.user-name, .logout, .login, .sign-up {
   text-decoration: none;
   color: #333333;
   line-height: 1.5;
@@ -74,7 +74,7 @@
   height: 40px; 
 }
 
-.user-nickname {
+.user-name {
   margin-right: 3vw;
   font-weight: bold;
 }
