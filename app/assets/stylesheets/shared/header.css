@@ -16,12 +16,9 @@
 }
 
 .app-name {
-  width: 10vw;
-  margin-right: 10vw;
-  text-decoration: none;
+  width: 15vw;
+  margin-right: 5vw;
   color: #696969;
-  font-size: 40px;
-  font-weight: bold;
 }
 
 .search-form {
@@ -58,50 +55,31 @@
   padding: 1vh 0;
 }
 
-.lists-left {
-  display: flex;
-  min-width: 200px;
-}
-
-.category-list {
-  text-decoration: none;
-  margin-right: 3vw;
-  color: #333333;
-}
-
-.brand-list {
-  text-decoration: none;
-  color: #333333;
-}
-
 .lists-right {
   display: flex;
   list-style: none;
-  align-items: flex-end;
+  align-items: center;
   justify-content: flex-end;
   width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.user-nickname, .logout, .login, .sign-up {
+  text-decoration: none;
+  color: #333333;
+  line-height: 1.5;
+  display: flex;
+  align-items: center; 
+  height: 40px; 
 }
 
 .user-nickname {
-  text-decoration: none;
   margin-right: 3vw;
-  color: #333333;
   font-weight: bold;
 }
 
-.logout {
-  text-decoration: none;
-  color: #333333;
-}
-
 .login {
-  text-decoration: none;
   line-height: 32px;
   margin-right: 3vw;
-  color: #333333;
-}
-
-.sign-up {
-  text-decoration: none;
-  color: #333333;
 }

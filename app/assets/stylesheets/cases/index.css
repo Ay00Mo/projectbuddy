@@ -45,8 +45,11 @@ a {
 }
 
 .list-pict {
-  margin-bottom: 20px;
   width: 100%;
+  max-width: 100px;
+  height: 100px;
+  object-fit: contain; 
+  margin-bottom: 20px;
 }
 
 .reason-list-number {

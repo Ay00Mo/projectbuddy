@@ -8,7 +8,7 @@
     </h2>
     <ul class='reason-lists'>
       <li class='list'>
-        <%= image_tag "furima-intro01.png", class:"list-pict" %>
+        <%= image_tag "keyboard.png", class:"list-pict" %>
         <span class='reason-list-number'>1</span>
         <h3 class='reason-list-text'>
           <span class='reason-list-blue-text'>案件登録</span>
@@ -18,7 +18,7 @@
         </p>
       </li>
       <li class='list'>
-        <%= image_tag "furima-intro02.png", class:"list-pict" %>
+        <%= image_tag "flag2.png", class:"list-pict" %>
         <span class='reason-list-number'>2</span>
         <h3 class='reason-list-text'>
           <span class='reason-list-blue-text'>マイページ</span>
@@ -28,7 +28,7 @@
         </p>
       </li>
       <li class='list'>
-        <%= image_tag "furima-intro03.png", class:"list-pict" %>
+        <%= image_tag "search2.png", class:"list-pict" %>
         <span class='reason-list-number'>3</span>
         <h3 class='reason-list-text'>
           <span class='reason-list-blue-text'>案件詳細検索</span>
@@ -56,24 +56,25 @@
   </div>
   <%# /本日期限一覧 %>
 </div>
-<%= link_to('#', class: 'case-register-btn') do %>
-  <span class='case-register-btn-text'>案件登録</span>
-  <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
-<% end %>
-<%= link_to('#', class: 'contact-register-btn') do %>
-  <span class='contact-register-btn-text'>担当者登録</span>
-  <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
-<% end %>
-<%= link_to('#', class: 'applicant-register-btn') do %>
-  <span class='applicant-register-btn-text'>出願人者登録</span>
-  <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
-<% end %>
-<%= link_to('#', class: 'attorney-firm-register-btn') do %>
-  <span class='attorney-firm-register-btn-text'>代理人者登録</span>
-  <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
-<% end %>
-<%= link_to('#', class: 'procedure-register-btn') do %>
-  <span class='procedure-register-btn-text'>内容登録</span>
-  <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
-<% end %>
+<div class="fixed-button-container">
+  <%= link_to('#', class: 'register-btn case-register-btn') do %>
+    <span class='register-btn-text case-register-btn-text'>案件<br>登録</span>
+  <% end %>
+
+  <%= link_to('#', class: 'register-btn contact-register-btn') do %>
+    <span class='register-btn-text contact-register-btn-text'>担当者<br>登録</span>
+  <% end %>
+
+  <%= link_to('#', class: 'register-btn applicant-register-btn') do %>
+    <span class='register-btn-text applicant-register-btn-text'>出願人<br>登録</span>
+  <% end %>
+
+  <%= link_to('#', class: 'register-btn attorney-firm-register-btn') do %>
+    <span class='register-btn-text attorney-firm-register-btn-text'>代理人<br>登録</span>
+  <% end %>
+
+  <%= link_to('#', class: 'register-btn procedure-register-btn') do %>
+    <span class='register-btn-text procedure-register-btn-text'>内容<br>登録</span>
+  <% end %>
+</div>
 <%= render "shared/footer" %>
