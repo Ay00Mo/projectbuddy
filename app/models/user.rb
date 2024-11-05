@@ -4,11 +4,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :last_name, :first_name, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, message: 'is invalid. Input full-width characters.' }
-  validates :first_name, presence: true
+  validates :last_name, :first_name, presence: true,
+                                     format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, message: 'is invalid. Input full-width characters.' }
   validate :password_complexity
-  validates :pin_number, format: { with: /\A[0-9]{4}\z/ }
-  validates :user_type, format: { with: /\A[1-2]{1}\z/ }
+  validates :pin_number, presence: true, format: { with: /\A[0-9]{4}\z/, message: 'is invalid. Input 4 digit numbers.' }
+  validates :user_type, presence: true, format: { with: /\A[1-2]{1}\z/, message: 'is invalid. Input 1 or 2.' }
 
   private
 
