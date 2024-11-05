@@ -10,11 +10,11 @@
 }
 
 /* 重複しているスタイルを共通化 */
-.register-btn {
+.record-btn {
   width: 80px;  /* 新しい幅 */
   height: 80px; /* 新しい高さ */
   border-radius: 50%; /* 丸い形にする */
-  background: #3ccace;
+  background: #77c0d4;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,7 +25,7 @@
 }
 
 
-.register-btn-text {
+.record-btn-text {
   font-size: 18px; /* 新しいフォントサイズ */
   margin-bottom: 5px; /* 必要なら調整 */
   color: #fff;
