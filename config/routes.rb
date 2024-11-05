@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  root "cases#index"
+  devise_for :users
+  root to: "cases#index"
+  resources :users, only: [:show, :edit, :update]
 end

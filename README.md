@@ -8,8 +8,8 @@
 | first_name         | string | null: false |
 | email              | string | null: false, unique: true |
 | encrypted_password | string | null: false |
-| pin_number         | string | null: false |
-| usr_type           | string | null: false |
+| pin_number         | integer| null: false |
+| usr_type           | integer| null: false |
 
 ### Association
 
