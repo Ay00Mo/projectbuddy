@@ -10,7 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_11_04_062305) do
+ActiveRecord::Schema[7.0].define(version: 2024_11_06_091500) do
+  create_table "cases", charset: "utf8", force: :cascade do |t|
+    t.string "reference_number", null: false
+    t.string "application_number", null: false
+    t.string "country_code", null: false
+    t.integer "law_category_id", null: false
+    t.integer "category_id", null: false
+    t.integer "status_id", null: false
+    t.date "beginning_date", null: false
+    t.date "deadline", null: false
+    t.date "absolute_deadline", null: false
+    t.date "request_date"
+    t.date "delivery_date"
+    t.date "response_date"
+    t.date "instruction_date"
+    t.date "filing_date"
+    t.text "remarks"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", charset: "utf8", force: :cascade do |t|
     t.string "last_name", null: false
     t.string "first_name", null: false
