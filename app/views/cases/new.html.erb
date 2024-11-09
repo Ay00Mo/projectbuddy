@@ -14,11 +14,11 @@
           </div>
           <div class="field applicant-field">
             <label class="field-label">出願人 <span class="required">必須</span></label>
-            <%= f.text_area :application_number, class:"field-input large", id:"application-number" %>
+            <div class="field-input large"> <%# 出願人登録機能を実装後に対応 %></div>
           </div>
           <div class="field id-number-field">
             <label class="field-label">ID (自動)</label>
-            <%= f.text_area :id, class:"field-input large", id:"id-number" %>
+            <div class="field-input large" id="id-number"><%= @case.id %></div>
           </div>
         </div>
         <div class="form-row">
@@ -64,7 +64,7 @@
           </div>
           <div class="field status-field">
             <label class="field-label">状況 <span class="required">必須</span></label>
-            <%= f.collection_select(:status_id, Category.all, :id, :name, {}, {class:"field-select large", id:"status"}) %>
+            <%= f.collection_select(:status_id, Status.all, :id, :name, {}, {class:"field-select large", id:"status"}) %>
           </div>
           <div class="field date-field">
             <label class="field-label">起算日 <span class="required">必須</span></label>
