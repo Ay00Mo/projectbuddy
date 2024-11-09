@@ -1,14 +1,14 @@
 <%= render "shared/header" %>
 <div class='main'>
 
-  <%# ProjectBuddyの機能 %>
+  <%# Serviceの説明部分  %>
   <div class='select-reason-contents'>
     <h2 class='title'>
-      ProjectBuddyの機能
+      Service
     </h2>
     <ul class='reason-lists'>
       <li class='list'>
-        <%= image_tag "keyboard.png", class:"list-pict" %>
+        <%= link_to image_tag("keyboard.png", class:"list-pict"), new_case_path %>
         <span class='reason-list-number'>1</span>
         <h3 class='reason-list-text'>
           <span class='reason-list-blue-text'>案件登録</span>
@@ -39,7 +39,7 @@
       </li>
     </ul>
   </div>
-  <%# /ProjectBuddyの機能の説明部分 %>
+  <%# /Serviceの説明部分 %>
 
   <%# 本日期限一覧 %>
   <div class='item-contents'>
@@ -57,7 +57,7 @@
   <%# /本日期限一覧 %>
 </div>
 <div class="fixed-button-container">
-  <%= link_to('#', class: 'record-btn case-record-btn') do %>
+  <%= link_to(new_case_path, class: 'record-btn case-record-btn') do %>
     <span class='record-btn-text case-record-btn-text'>案件<br>登録</span>
   <% end %>
 
