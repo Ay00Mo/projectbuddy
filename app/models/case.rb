@@ -7,9 +7,11 @@ class Case < ApplicationRecord
 
   VALID_CHARACTERS_REGEX = %r{\A[!\#$%&',\-./a-zA-Z0-9]+\z}
   validates :reference_number, presence: true,
-                               format: { with: VALID_CHARACTERS_REGEX, message: 'is invalid. Only alphanumeric characters and allowed symbols (!#$%&’, -/) are permitted' }
+                               format: { with: VALID_CHARACTERS_REGEX,
+                                         message: 'is invalid. Only alphanumeric characters and allowed symbols (!#$%&’, -/) are permitted' } # rubocop:disable Layout/LineLength
   validates :application_number, presence: true,
-                                 format: { with: VALID_CHARACTERS_REGEX, message: 'is invalid. Only alphanumeric characters and allowed symbols (!#$%&’, -/) are permitted' }
+                                 format: { with: VALID_CHARACTERS_REGEX,
+                                           message: 'is invalid. Only alphanumeric characters and allowed symbols (!#$%&’, -/) are permitted' } # rubocop:disable Layout/LineLength
   validates :country_code, presence: true, format: { with: /\A[A-Z]{2}\z/, message: 'should be 2 capital letters' }
   validates :beginning_date, presence: true
   validates :deadline, presence: true

@@ -20,6 +20,7 @@ class CasesController < ApplicationController
 
   def case_params
     params.require(:case).permit(:reference_number, :application_number, :id, :country_code, :law_category_id, :category_id,
-                                 :status_id, :beginning_date, :deadline, :absolute_deadline, :request_date, :delivery_date, :response_date, :instruction_date, :filing_date, :remarks).merge(user_id: current_user.id)
+                                 :status_id, :beginning_date, :deadline, :absolute_deadline, :request_date, :delivery_date,
+                                 :response_date, :instruction_date, :filing_date, :remarks).merge(user_id: current_user.id)
   end
 end
