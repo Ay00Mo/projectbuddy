@@ -11,6 +11,7 @@
 .form-wrap {
   width: 50%;
   background-color: white;
+  margin-bottom: auto;
   padding-bottom: 70px;
 }
 
@@ -147,7 +148,7 @@
 }
 
 .register-btn {
-  width: 50%;
+  width: 30%;
   margin: 0 auto;
 }
 
