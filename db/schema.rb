@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_11_06_091500) do
+ActiveRecord::Schema[7.0].define(version: 2024_11_09_081738) do
   create_table "cases", charset: "utf8", force: :cascade do |t|
     t.string "reference_number", null: false
     t.string "application_number", null: false
@@ -29,6 +29,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_06_091500) do
     t.text "remarks"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_cases_on_user_id"
   end
 
   create_table "users", charset: "utf8", force: :cascade do |t|
@@ -47,4 +49,5 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_06_091500) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "cases", "users"
 end
