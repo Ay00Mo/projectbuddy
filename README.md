@@ -35,6 +35,7 @@
 | instruction_date   | date   |             |
 | filing_date        | date   |             |
 | remarks            | text   |             |
+| user               | references | null: false, foreign_key: true |
 
 ### Association
 

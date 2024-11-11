@@ -1,0 +1,132 @@
+html, body {
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.details-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px;
+}
+
+.details-contents {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.field-label {
+  width: 30%;
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.field-input, .field-date-input, .field-select, .remarks {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.field-input.large, .field-date-input.large, .field-select.large {
+  width: 238px;
+  height: 42px;
+  padding: 10px;
+}
+
+.field-input.medium, .field-date-input.medium, .field-select.medium {
+  width: 178px;
+  height: 42px;
+  padding: 10px;
+}
+
+.field-label, .field-input, .field-date-input, .field-select, .remarks {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.field-placeholder {
+  background-color: #eef;
+  width: 238px;
+  height: 42px;
+}
+
+.field-right-label {
+  font-weight: bold;
+}
+
+.remarks {
+  height: 100%;
+  min-height: 450px;
+  width: 100%;
+}
+
+.required {
+  color: red;
+}
+
+.upper-content {
+  margin-bottom: 20px;
+}
+
+.lower-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.lower-content-left {
+  width: 48%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1px;
+}
+
+.lower-content-right {
+  width: 48%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.lower-content-left .field {
+  margin-bottom: 1px;
+}
+
+.bottom-content {
+  margin-top: 20px;
+}
+
+.register-btn {
+  width: 30%;
+  margin: 0 auto;
+}
+
+.register-red-btn {
+  width: 100%; /* ボタンの幅を親要素に合わせます。 */
+  background: #ea352d;
+  border: 1px solid #ea352d;
+  color: #fff;
+  line-height: 48px;
+  font-size: 14px;
+  cursor: pointer;
+}
