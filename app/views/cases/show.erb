@@ -1,0 +1,123 @@
+<%# ヘッダー %>
+<div class="details-container">
+  <div class="details-header">
+    <div class="details-header-top">
+      <h2 class="details-title">案件詳細</h2>
+    </div>
+    <div class="details-header-bottom">
+      <button class="button add-record-button">レコード追加</button>
+      <button class="button copy-record-button">レコード複製</button>
+      <button class="button edit-record-button">レコード修正</button>
+      <button class="button delete-record-button">レコード削除</button>
+      <span class="pin-number-container">
+        <label for="pin">PIN:</label>
+        <input type="password" id="pin" name="pin_number">
+      </span>
+      <button class="button close-detail-button" id="close-button">閉じる</button>
+    </div>
+  </div>
+  <div class="details-contents">
+    <%# 上部内容 %>
+    <div class="upper-content">
+      <div class="form-row">
+        <div class="field reference-number-field">
+          <label class="field-label">案件番号</label>
+          <div class="case-detail-box"><%= @case.reference_number %></div>
+        </div>
+        <div class="field applicant-field">
+          <label class="field-label">出願人</label>
+          <div class="field-input large"> <%# 出願人登録機能を実装後に対応 %></div>
+        </div>
+        <div class="field id-number-field">
+          <label class="field-label">ID (自動)</label>
+          <div class="case-detail-box"><%= @case.id %></div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field application-number-field">
+          <label class="field-label">出願番号</label>
+          <div class="case-detail-box"><%= @case.application_number %></div>
+        </div>
+        <div class="field attorney-field">
+          <label class="field-label">代理人</label>
+          <div class="field-input large"> <%# 代理人登録機能を実装後に対応 %></div>
+        </div>
+        <div class="field country-code-field">
+          <label class="field-label">国コード</label>
+          <div class="case-detail-box"><%= @case.country_code %></div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field client-contact-field">
+          <label class="field-label">担当者</label>
+          <div class="field-input large"> <%# 担当者登録機能を実装後に対応 %></div>
+        </div>
+        <div class="field inner-contact-field">
+          <label class="field-label">社内担当者 </label>
+          <div class="field-input large"> <%# 担当者登録機能を実装後に対応 %></div>
+        </div>
+        <div class="field law-category-field">
+          <label class="field-label">四法区分 </label>
+          <div class="case-detail-box"><%= @case.law_category.name %></div>
+        </div>
+      </div>
+    </div>
+
+    <%# 下部内容 %>
+    <div class="lower-content">
+      <div class="lower-content-left">
+        <div class="field category-field">
+          <label class="field-label">区分 </label>
+          <div class="case-detail-box"><%= @case.category.name %></div>
+        </div>
+        <div class="field procedure-field">
+          <label class="field-label">内容 </label>
+          <div class="field-input large"> <%# 内容登録機能を実装後に対応 %></div>
+        </div>
+        <div class="field status-field">
+          <label class="field-label">状況 </label>
+          <div class="case-detail-box"><%= @case.status.name %></div>
+        </div>
+        <div class="field date-field">
+          <label class="field-label">起算日 </label>
+          <div class="case-detail-box"><%= @case.beginning_date %></div>
+        </div>
+        <div class="field date-field">
+          <label class="field-label">期限日 </label>
+          <div class="case-detail-box"><%= @case.deadline %></div>
+        </div>
+        <div class="field date-field">
+          <label class="field-label">法定期限日 </label>
+          <div class="case-detail-box"><%= @case.absolute_deadline %></div>
+        </div>
+        <div class="field date-field">
+          <label class="field-label">依頼日</label>
+          <div class="case-detail-box"><%= @case.request_date %></div>
+        </div>
+        <div class="field date-field">
+          <label class="field-label">納品日</label>
+          <div class="case-detail-box"><%= @case.delivery_date %></div>
+        </div>
+        <div class="field date-field">
+          <label class="field-label">回答日</label>
+          <div class="case-detail-box"><%= @case.response_date %></div>
+        </div>
+        <div class="field date-field">
+          <label class="field-label">指示日</label>
+          <div class="case-detail-box"><%= @case.instruction_date %></div>
+        </div>
+        <div class="field date-field">
+          <label class="field-label">提出日</label>
+          <div class="case-detail-box"><%= @case.filing_date %></div>
+        </div>
+      </div>
+      <div class="lower-content-right">
+        <div class="remarks-field">
+          <label class="field-right-label">備考</label>
+          <div class="case-detail-box-remarks"><%= @case.remarks %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
