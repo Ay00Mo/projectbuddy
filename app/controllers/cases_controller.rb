@@ -1,5 +1,5 @@
 class CasesController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :show]
   def index
   end
 
@@ -14,6 +14,10 @@ class CasesController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def show
+    @case = Case.find(params[:id])
   end
 
   private
