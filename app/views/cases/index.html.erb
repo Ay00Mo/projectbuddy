@@ -18,7 +18,7 @@
         </p>
       </li>
       <li class='list'>
-        <%= image_tag "flag2.png", class:"list-pict" %>
+        <%= link_to image_tag("flag2.png", class: "list-pict"), user_path(current_user) %>
         <span class='reason-list-number'>2</span>
         <h3 class='reason-list-text'>
           <span class='reason-list-blue-text'>マイページ</span>
