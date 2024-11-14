@@ -44,6 +44,7 @@
 - belongs_to :category
 - belongs_to :status
 - belongs_to :user
+- belongs_to :internal_contact, class_name: "User"
 - has_many :case_contacts
 - has_many :contacts, through: :case_contacts
 - has_many :case_attorney_firms
