@@ -36,6 +36,7 @@
 | filing_date        | date   |             |
 | remarks            | text   |             |
 | user               | references | null: false, foreign_key: true |
+| internal_contact   | references | null: false, foreign_key: { to_table: :users } |
 
 ### Association
 
