@@ -12,6 +12,10 @@ class User < ApplicationRecord
   validates :pin_number, presence: true, format: { with: /\A[0-9]{4}\z/, message: 'is invalid. Input 4 digit numbers.' }
   validates :user_type, presence: true, format: { with: /\A[1-2]{1}\z/, message: 'is invalid. Input 1 or 2.' }
 
+  def full_name
+    "#{last_name} #{first_name}"
+  end
+  
   private
 
   def password_complexity
