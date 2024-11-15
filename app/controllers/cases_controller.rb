@@ -10,6 +10,7 @@ class CasesController < ApplicationController
 
   def create
     @case = Case.new(case_params)
+    @users = User.all
     if @case.save
       redirect_to root_path, notice: '案件が正常に作成されました。' # マイページ実装後はマイページに戻るように設定する
     else
