@@ -17,16 +17,30 @@
           フォームで簡単に入力！
         </p>
       </li>
-      <li class='list'>
-        <%= link_to image_tag("flag2.png", class: "list-pict"), user_path(current_user) %>
-        <span class='reason-list-number'>2</span>
-        <h3 class='reason-list-text'>
-          <span class='reason-list-blue-text'>マイページ</span>
-        </h3>
-        <p class='reason-list-description'>
-          自分の案件を一覧で確認！
-        </p>
-      </li>
+      <% if current_user %>
+        <li class='list'>
+          <%= link_to image_tag("flag2.png", class: "list-pict"), user_path(current_user) %>
+          <span class='reason-list-number'>2</span>
+          <h3 class='reason-list-text'>
+            <span class='reason-list-blue-text'>マイページ</span>
+          </h3>
+          <p class='reason-list-description'>
+            自分の案件を一覧で確認！
+          </p>
+        </li>
+      <% else %>
+        <li class='list'>
+          <%= image_tag("flag2.png", class: "list-pict") %>
+          <span class='reason-list-number'>2</span>
+          <h3 class='reason-list-text'>
+            <span class='reason-list-blue-text'>マイページ</span>
+          </h3>
+          <p class='reason-list-description'>
+            自分の担当案件を一覧で確認！
+            (※ログインが必要です)
+          </p>
+        </li>
+      <% end %>
       <li class='list'>
         <%= image_tag "search2.png", class:"list-pict" %>
         <span class='reason-list-number'>3</span>
