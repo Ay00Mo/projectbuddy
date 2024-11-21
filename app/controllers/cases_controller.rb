@@ -12,7 +12,7 @@ class CasesController < ApplicationController
     @case = Case.new(case_params)
     @users = User.all
     if @case.save
-      redirect_to root_path, notice: '案件が正常に作成されました。' # マイページ実装後はマイページに戻るように設定する
+      redirect_to user_path(current_user), notice: '案件が正常に作成されました。'
     else
       render :new, status: :unprocessable_entity
     end
