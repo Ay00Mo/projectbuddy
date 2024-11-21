@@ -41,7 +41,7 @@
       <tbody>
         <% @unprocessed_cases.each do |single_case| %>
           <tr>
-            <td><%= single_case.reference_number %></td>
+            <td><%= link_to single_case.reference_number, case_path(single_case), class: "case-link" %></td>
             <td><%= single_case.category.name %></td>
             <td></td> <!-- 内容登録機能実装後設定 -->
             <td><%= single_case.status.name %></td>
@@ -72,7 +72,7 @@
       <tbody>
         <% @waiting_report_cases.each do |single_case| %>
           <tr>
-            <td><%= single_case.reference_number %></td>
+            <td><%= link_to single_case.reference_number, case_path(single_case), class: "case-link" %></td>
             <td><%= single_case.category.name %></td>
             <td></td> <!-- 内容の欄を一旦空白にします -->
             <td><%= single_case.status.name %></td>
