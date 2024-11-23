@@ -16,5 +16,6 @@ FactoryBot.define do
     filing_date { '2024/09/06' }
     remarks { Faker::Lorem.sentence }
     association :user
+    internal_contact { association :user }
   end
 end

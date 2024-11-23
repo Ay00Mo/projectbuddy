@@ -13,7 +13,7 @@
         <label for="pin">PIN:</label>
         <input type="password" id="pin" name="pin_number">
       </span>
-      <button class="button close-detail-button" id="close-button">閉じる</button>
+      <button class="button close-detail-button" id="close-button" data-user-id="<%= current_user.id %>">閉じる</button>
     </div>
   </div>
   <div class="details-contents">
@@ -52,7 +52,7 @@
           <label class="field-label">担当者</label>
           <div class="field-input large"> <%# 担当者登録機能を実装後に対応 %></div>
         </div>
-        <div class="field inner-contact-field">
+        <div class="field internal-contact-field">
           <label class="field-label">社内担当者 </label>
           <div class="field-input large"> <%# 担当者登録機能を実装後に対応 %></div>
         </div>

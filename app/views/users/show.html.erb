@@ -1,0 +1,87 @@
+<header class='top-page-header'>
+  <div class='search-bar-contents'>
+  <%= link_to image_tag("projectbuddy-logo2.png", class:"app-name"), "/" %>
+  <div class='nav'>
+    <ul class='lists-right'>
+      <% if user_signed_in? %>
+        <li><%= link_to "#{current_user.last_name} #{current_user.first_name}", user_path(current_user), class: "user-name" %></li>
+        <li><%= link_to 'ログアウト', destroy_user_session_path, data: {turbo_method: :delete}, class: "logout" %></li>
+      <% else %>
+        <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
+        <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
+      <% end %>
+    </ul>
+  </div>
+</header>
+
+<div class="main">
+  <!-- 簡易検索窓 -->
+  <div class="search-box">
+    <%= form_with(url: '#', method: :get, local: true) do |form| %>
+      <%= form.text_field :query, placeholder: "案件を検索", class: "search-input" %>
+      <%= form.submit "検索", class: "search-btn" %>
+    <% end %>
+  </div>
+
+  <!-- 未処理案件一覧 -->
+  <div class="list-container">
+    <h2 class="list-title">未処理案件一覧</h2>
+    <table class="case-table">
+      <thead>
+        <tr>
+          <th>案件番号</th>
+          <th>区分</th>
+          <th>内容</th>
+          <th>状況</th>
+          <th>期限日</th>
+          <th>法定期限日</th>
+          <th>担当者</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @unprocessed_cases.each do |single_case| %>
+          <tr>
+            <td><%= link_to single_case.reference_number, case_path(single_case), class: "case-link" %></td>
+            <td><%= single_case.category.name %></td>
+            <td></td> <!-- 内容登録機能実装後設定 -->
+            <td><%= single_case.status.name %></td>
+            <td><%= single_case.deadline %></td>
+            <td><%= single_case.absolute_deadline %></td>
+            <td></td> <!-- 担当者登録機能実装後に設定 -->
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 報告待ち案件一覧 -->
+  <div class="list-container">
+    <h2 class="list-title">報告待ち案件一覧</h2>
+    <table class="case-table">
+      <thead>
+        <tr>
+          <th>案件番号</th>
+          <th>区分</th>
+          <th>内容</th>
+          <th>状況</th>
+          <th>期限日</th>
+          <th>法定期限日</th>
+          <th>担当者</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @waiting_report_cases.each do |single_case| %>
+          <tr>
+            <td><%= link_to single_case.reference_number, case_path(single_case), class: "case-link" %></td>
+            <td><%= single_case.category.name %></td>
+            <td></td> <!-- 内容の欄を一旦空白にします -->
+            <td><%= single_case.status.name %></td>
+            <td><%= single_case.deadline %></td>
+            <td><%= single_case.absolute_deadline %></td>
+            <td></td> <!-- 担当者登録機能実装後に設定 -->
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
