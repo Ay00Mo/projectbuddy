@@ -1,156 +1,118 @@
-# テーブル設計
+# アプリケーション名
+ProjectBuddy
 
-## users テーブル
+# アプリケーション概要
+**ProjectBuddy**は、案件を登録し、自分の担当案件を効率的に管理するためのアプリケーションです。
 
-| Column             | Type   | Options     |
-| ------------------ | ------ | ----------- |
-| last_name          | string | null: false |
-| first_name         | string | null: false |
-| email              | string | null: false, unique: true |
-| encrypted_password | string | null: false |
-| pin_number         | integer| null: false |
-| usr_type           | integer| null: false |
+# URL
+https://projectbuddy-2uah.onrender.com
 
-### Association
+# テスト用アカウント
+* Basic認証ID: admin
+* Basic認証Pass: LPH69enE
+* メールアドレス: test@test.com
+* パスワード: 111aaa
 
-- has_many :cases
+# 利用方法
+## 案件登録
+1. **トップページのヘッダー**からユーザー新規登録を行う。
+2. **案件登録**をクリックし、以下の情報を入力して案件を登録する。
+  - 案件番号
+  - 出願番号
+  - 国コード
+  - 社内担当者
+  - 四法区分
+  - 区分
+  - 状況
+  - 起算日
+  - 期限日
+  - 法定期限日
 
+## マイページ
+1. **トップページ**からマイページに遷移すると、自分が担当している案件を確認できる。
+2. **未処理案件一覧**と**報告待ち一覧**を表示し、それぞれの状況を確認できる。 
+  - **未処理案件一覧**: 自分の対応が完了していない案件を表示します。 
+  - **報告待ち一覧**: 自分の対応は完了しているが、他者からの報告を待っている案件を表示します。
+3. 案件番号をクリックすると**案件詳細画面**に遷移し、詳細情報を確認できる。
 
-## cases テーブル
+# アプリケーションを作成した背景 
+現在の職場では、会社全体で使用している案件管理用のデータベースがあります。しかし、このデータベースは以下の理由で、案件管理には十分適していない。
 
-| Column             | Type   | Options     |
-| ------------------ | ------ | ----------- |
-| reference_number   | string | null: false |
-| application_number | string | null: false |
-| country_code       | string | null: false |
-| law_category_id    | integer| null: false |
-| category_id        | integer| null: false |
-| status_id          | integer| null: false |
-| beginning_date     | date   | null: false |
-| deadline           | date   | null: false |
-| absolute_deadline  | date   | null: false |
-| request_date       | date   |             |
-| delivery_date      | date   |             |
-| response_date      | date   |             |
-| instruction_date   | date   |             |
-| filing_date        | date   |             |
-| remarks            | text   |             |
-| user               | references | null: false, foreign_key: true |
-| internal_contact   | references | null: false, foreign_key: { to_table: :users } |
+ - 案件や国ごとに発行される書類が多岐にわたるため、国・書類ごとの異なる期限を効率的に管理できない。
+ - そのため、各担当者が個別にエクセルなどを使って案件を管理している。
 
-### Association
+## エクセルを使用した場合の課題
+ - 管理項目が多く、1つの画面にまとめて表示することが難しい。
+ - 入力作業や案件確認作業に時間がかかる。
 
-- belongs_to :law_category
-- belongs_to :category
-- belongs_to :status
-- belongs_to :user
-- belongs_to :internal_contact, class_name: "User"
-- has_many :case_contacts
-- has_many :contacts, through: :case_contacts
-- has_many :case_attorney_firms
-- has_many :attorney_firms, through: :case_attorneys_firms
-- has_many :case_procedures
-- has_many :procedures, through: :case_procedures
-- has_many :case_applicants
-- has_many :applicants, through: :case_applicants
+## 市場に存在するツールの課題
+ - 市販の案件管理データベースの中には、要件を満たすものもありましたが、初期費用が高額。
+ - 現在、社内共通のデータベースが存在している以上、新たに高額なシステムを導入することは難しい。
 
+## 開発の動機
+そこで、既存の高機能データベースよりも性能は劣るものの、エクセルよりは効率的で管理しやすいツールを自作することで、現状の課題を解決したいと考えた。
 
-## contacts テーブル
+# 実装した機能についての画像やGIF及びその説明
+[![Image from Gyazo](https://i.gyazo.com/c662f0e221316dde62cd712151dbd832.png)](https://gyazo.com/c662f0e221316dde62cd712151dbd832)
 
-| Column             | Type   | Options     |
-| ------------------ | ------ | ----------- |
-| last_name_jp       | string | null: false |
-| first_name_jp      | string | null: false |
-| last_name_en       | string | null: false |
-| first_name_en      | string | null: false |
+[![Image from Gyazo](https://i.gyazo.com/09f01893c326810fd6bfd3ae35f9112c.gif)](https://gyazo.com/09f01893c326810fd6bfd3ae35f9112c)
 
-### Association
+[![Image from Gyazo](https://i.gyazo.com/bc50aded0f7d55ee96339d4286f6e39f.gif)](https://gyazo.com/bc50aded0f7d55ee96339d4286f6e39f)
 
-- has_many :case_contacts
-- has_many :cases, through: :case_contacts
+[![Image from Gyazo](https://i.gyazo.com/41af8eccd1e3a2ab1acbeb74a0cacc9a.gif)](https://gyazo.com/41af8eccd1e3a2ab1acbeb74a0cacc9a)
 
+# 実装予定の機能
+現在、担当者登録機能を実装中です。<br>
+以下の項目についても今後実装する予定です。
+ - 出願人登録機能
+ - 内容登録機能
+ - 検索機能
+ - 案件編集機能
+ - 案件削除機能
 
-## case_contacts テーブル
+## データベース設計
+![ER図](docs/er_diagram.png)
 
-| Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
-| case    | references | null: false, foreign_key: true |
-| contact | references | null: false, foreign_key: true |
+# 画面遷移図
+![画面遷移図](docs/screen_flow.png)
 
-### Association
+# 開発環境
+* フロントエンド
+* バックエンド
+* インフラ
+* テスト
+* テキストエディタ
+* タスク管理
 
-- belongs_to :case
-- belongs_to :contact
+# ローカルでの動作方法
+以下のコマンドを順に実行。
+% gid clone https://github.com/Ay00Mo/projectbuddy.git
+% cd xxxxxxx
+% bundle install
+% rails db:create
+% rails db:migrate
 
+# 工夫したポイント
+## 1. ユーザーごとの案件管理を効率化した
+- 未処理案件一覧と報告待ち一覧を分けて表示することで、ユーザーが優先的に対応すべき案件を一目で確認できるようにした。
+- 担当案件の状態を簡単に管理できるインターフェースを提供し、日々の作業効率を向上させた。
 
-## attorney_firms テーブル
+## 2. 柔軟なデータ入力設計を実現した
+- 各案件に必要な情報（例: 案件番号、出願番号、国コード、期限日など）を詳細に登録できるようにした。
+- 国や書類ごとに異なる期限管理を容易にするため、入力フィールドを柔軟に設計した。
 
-| Column         | Type   | Options     |
-| -------------- | ------ | ----------- |
-| firm_name      | string | null: false |
+## 3. 直感的なUI設計を行った
+- ユーザーが迷わず操作できるよう、画面遷移をシンプルにした。
+- マイページから担当案件や案件詳細にすぐアクセスできる構造を採用した。
 
-### Association
+## 4. データの一元管理を実現した
+- エクセルの煩雑さを解消するため、案件情報を一元的に管理できるデータベースを設計した。
+- 必要なデータをすぐに確認できるようにし、手作業によるミスや確認作業の手間を削減した。
 
-- has_many :case_attorney_firms
-- has_many :cases, through: :case_attorney_firms
+## 5. コスト意識を反映した開発を行った
+- 市場の高額な案件管理ツールを参考にしつつ、現状の課題にフォーカスしたシンプルで実用的なツールを低コストで実現した。
+- 社内の既存システムと競合しないよう、補完的な機能に特化した。
 
-
-## case_attorney_firms テーブル
-
-| Column         | Type       | Options                        |
-| -------------- | ---------- | ------------------------------ |
-| case           | references | null: false, foreign_key: true |
-| attorney_firm  | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :case
-- belongs_to :attorney_firm
-
-
-## applicants テーブル
-
-| Column              | Type   | Options     |
-| ------------------- | ------ | ----------- |
-| applicant_name      | string | null: false |
-
-### Association
-
-- has_many :case_applicants
-- has_many :cases, through: :case_applicants
-
-
-## case_applicants テーブル
-
-| Column    | Type       | Options                        |
-| --------- | ---------- | ------------------------------ |
-| case      | references | null: false, foreign_key: true |
-| applicant | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :case
-- belongs_to :applicant
-
-
-## procedures テーブル
-
-| Column              | Type   | Options     |
-| ------------------- | ------ | ----------- |
-| procedure_name      | string | null: false |
-
-### Association
-- has_many :case_procedures
-- has_many :cases, through: :case_procedures
-
-
-## case_procedures テーブル
-
-| Column    | Type       | Options                        |
-| --------- | ---------- | ------------------------------ |
-| case      | references | null: false, foreign_key: true |
-| procedure | references | null: false, foreign_key: true |
-
-### Association
-- belongs_to :case
-- belongs_to :procedure
+## 6. 将来的な拡張性を意識した設計を採用した
+- 今後の要件変更や機能追加に対応できるよう、コードとデータベースの構造をモジュール化した。
+- チーム内で共有・改善しやすい設計を心掛けた。
