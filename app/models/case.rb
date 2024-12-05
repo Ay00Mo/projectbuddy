@@ -4,7 +4,9 @@ class Case < ApplicationRecord
   belongs_to :law_category
   belongs_to :category
   belongs_to :status
-  belongs_to :internal_contact, class_name: "User"
+  belongs_to :internal_contact, class_name: 'User'
+  has_many :case_contacts
+  has_many :contacts, through: :case_contacts
 
   VALID_CHARACTERS_REGEX = %r{\A[!\#$%&',\-./a-zA-Z0-9]+\z}
   validates :reference_number, presence: true,

@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_12_05_102152) do
+ActiveRecord::Schema[7.0].define(version: 2024_12_05_224911) do
+  create_table "case_contacts", charset: "utf8", force: :cascade do |t|
+    t.bigint "case_id", null: false
+    t.bigint "contact_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["case_id"], name: "index_case_contacts_on_case_id"
+    t.index ["contact_id"], name: "index_case_contacts_on_contact_id"
+  end
+
   create_table "cases", charset: "utf8", force: :cascade do |t|
     t.string "reference_number", null: false
     t.string "application_number", null: false
@@ -60,6 +69,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_12_05_102152) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "case_contacts", "cases"
+  add_foreign_key "case_contacts", "contacts"
   add_foreign_key "cases", "users"
   add_foreign_key "cases", "users", column: "internal_contact_id"
 end
