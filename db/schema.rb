@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_11_14_091651) do
+ActiveRecord::Schema[7.0].define(version: 2024_12_05_102152) do
   create_table "cases", charset: "utf8", force: :cascade do |t|
     t.string "reference_number", null: false
     t.string "application_number", null: false
@@ -33,6 +33,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_14_091651) do
     t.bigint "internal_contact_id", null: false
     t.index ["internal_contact_id"], name: "index_cases_on_internal_contact_id"
     t.index ["user_id"], name: "index_cases_on_user_id"
+  end
+
+  create_table "contacts", charset: "utf8", force: :cascade do |t|
+    t.string "last_name_jp", null: false
+    t.string "first_name_jp", null: false
+    t.string "last_name_en", null: false
+    t.string "first_name_en", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", charset: "utf8", force: :cascade do |t|
