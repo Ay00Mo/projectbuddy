@@ -25,11 +25,19 @@ class Case < ApplicationRecord
   validates :category_id, numericality: { other_than: 1, message: "can't be blank" }
   validates :status_id, numericality: { other_than: 1, message: "can't be blank" }
 
+  validate :must_have_one_contact
+
   private
 
   def check_deadlines
     if deadline.present? && absolute_deadline.present? && deadline >= absolute_deadline # rubocop:disable Style/GuardClause
       errors.add(:deadline, "should be on or before the absolute deadline") # rubocop:disable Style/StringLiterals
+    end
+  end
+
+  def must_have_one_contact
+    if contact_ids.blank? # rubocop:disable Style/IfUnlessModifier,Style/GuardClause
+      errors.add(:contacts, "can't be blank")
     end
   end
 end
