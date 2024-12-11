@@ -6,11 +6,13 @@ class CasesController < ApplicationController
   def new
     @case = Case.new
     @users = User.all
+    @contacts = Contact.all
   end
 
   def create
     @case = Case.new(case_params)
     @users = User.all
+    @contacts = Contact.all
     if @case.save
       redirect_to user_path(current_user), notice: '案件が正常に作成されました。'
     else
@@ -27,6 +29,6 @@ class CasesController < ApplicationController
   def case_params
     params.require(:case).permit(:reference_number, :application_number, :id, :country_code, :law_category_id, :category_id,
                                  :status_id, :beginning_date, :deadline, :absolute_deadline, :request_date, :delivery_date,
-                                 :response_date, :instruction_date, :filing_date, :remarks, :internal_contact_id).merge(user_id: current_user.id)
+                                 :response_date, :instruction_date, :filing_date, :remarks, :internal_contact_id, :contact_ids).merge(user_id: current_user.id)
   end
 end

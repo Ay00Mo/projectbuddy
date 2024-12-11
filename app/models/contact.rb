@@ -11,4 +11,8 @@ class Contact < ApplicationRecord
     validates :last_name_en
     validates :first_name_en
   end
+
+  def full_name
+    "#{last_name_jp} #{first_name_jp}"
+  end
 end
