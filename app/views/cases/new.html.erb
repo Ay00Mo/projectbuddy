@@ -38,11 +38,11 @@
         <div class="form-row">
           <div class="field client-contact-field">
             <label class="field-label">担当者 <span class="required">必須</span></label>
-            <div class="field-input large"> <%# 担当者登録機能を実装後に対応 %></div>
+            <%= f.collection_select(:contact_ids, @contacts, :id, :full_name, {include_blank: true}, {class: 'field-select large'})%>
           </div>
           <div class="field internal-contact-field">
             <label class="field-label">社内担当者 <span class="required">必須</span></label>
-            <%= f.collection_select(:internal_contact_id, @users, :id, :full_name, {}, {class: 'field-select large'}) %>
+            <%= f.collection_select(:internal_contact_id, @users, :id, :full_name, { include_blank: true }, {class: 'field-select large'}) %>
           </div>
           <div class="field law-category-field">
             <label class="field-label">四法区分 <span class="required">必須</span></label>

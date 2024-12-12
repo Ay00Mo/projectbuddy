@@ -28,17 +28,17 @@ RSpec.describe Case, type: :model do
       it 'reference_numberに全角英字が含まれていると登録できない' do
         @case.reference_number = 'Ｆ2024-aaa-001'
         @case.valid?
-        expect(@case.errors.full_messages).to include('Reference number is invalid. Only alphanumeric characters and allowed symbols (!#$%&’, -/) are permitted')
+        expect(@case.errors.full_messages).to include('Reference number is invalid. Only alphanumeric characters and allowed symbols (!#$%&’, -/) are permitted') # rubocop:disable Layout/LineLength
       end
       it 'reference_numberに全角数字が含まれていると登録できない' do
         @case.reference_number = 'NM２０２４#101'
         @case.valid?
-        expect(@case.errors.full_messages).to include('Reference number is invalid. Only alphanumeric characters and allowed symbols (!#$%&’, -/) are permitted')
+        expect(@case.errors.full_messages).to include('Reference number is invalid. Only alphanumeric characters and allowed symbols (!#$%&’, -/) are permitted') # rubocop:disable Layout/LineLength
       end
       it 'reference_numberに許可していない記号(!#$%&,-.)以外が含まれていると登録できない' do
         @case.reference_number = 'BBB@AAA'
         @case.valid?
-        expect(@case.errors.full_messages).to include('Reference number is invalid. Only alphanumeric characters and allowed symbols (!#$%&’, -/) are permitted')
+        expect(@case.errors.full_messages).to include('Reference number is invalid. Only alphanumeric characters and allowed symbols (!#$%&’, -/) are permitted') # rubocop:disable Layout/LineLength
       end
       it 'application_numberが空では登録できない' do
         @case.application_number = ''
@@ -48,17 +48,17 @@ RSpec.describe Case, type: :model do
       it 'application_numberに全角英字が含まれていると登録できない' do
         @case.application_number = 'ＡＢＣ'
         @case.valid?
-        expect(@case.errors.full_messages).to include('Application number is invalid. Only alphanumeric characters and allowed symbols (!#$%&’, -/) are permitted')
+        expect(@case.errors.full_messages).to include('Application number is invalid. Only alphanumeric characters and allowed symbols (!#$%&’, -/) are permitted') # rubocop:disable Layout/LineLength
       end
       it 'application_numberに全角数字が含まれていると登録できない' do
         @case.application_number = '１２３４５６'
         @case.valid?
-        expect(@case.errors.full_messages).to include('Application number is invalid. Only alphanumeric characters and allowed symbols (!#$%&’, -/) are permitted')
+        expect(@case.errors.full_messages).to include('Application number is invalid. Only alphanumeric characters and allowed symbols (!#$%&’, -/) are permitted') # rubocop:disable Layout/LineLength
       end
       it 'application_numberに許可していない記号(!#$%&,-.)以外が含まれていると登録できない' do
         @case.application_number = 'qt1345^90'
         @case.valid?
-        expect(@case.errors.full_messages).to include('Application number is invalid. Only alphanumeric characters and allowed symbols (!#$%&’, -/) are permitted')
+        expect(@case.errors.full_messages).to include('Application number is invalid. Only alphanumeric characters and allowed symbols (!#$%&’, -/) are permitted') # rubocop:disable Layout/LineLength
       end
       it 'country_codeが空だと登録できない' do
         @case.country_code = ''

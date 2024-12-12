@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root to: "cases#index"
   resources :users, only: [:show, :edit, :update]
   resources :cases, only: [:index, :new, :create, :show]
+  resources :contacts, only: [:new, :create]
 end

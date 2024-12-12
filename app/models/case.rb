@@ -4,7 +4,9 @@ class Case < ApplicationRecord
   belongs_to :law_category
   belongs_to :category
   belongs_to :status
-  belongs_to :internal_contact, class_name: "User"
+  belongs_to :internal_contact, class_name: 'User'
+  has_many :case_contacts
+  has_many :contacts, through: :case_contacts
 
   VALID_CHARACTERS_REGEX = %r{\A[!\#$%&',\-./a-zA-Z0-9]+\z}
   validates :reference_number, presence: true,
@@ -23,11 +25,19 @@ class Case < ApplicationRecord
   validates :category_id, numericality: { other_than: 1, message: "can't be blank" }
   validates :status_id, numericality: { other_than: 1, message: "can't be blank" }
 
+  validate :must_have_one_contact
+
   private
 
   def check_deadlines
     if deadline.present? && absolute_deadline.present? && deadline >= absolute_deadline # rubocop:disable Style/GuardClause
       errors.add(:deadline, "should be on or before the absolute deadline") # rubocop:disable Style/StringLiterals
+    end
+  end
+
+  def must_have_one_contact
+    if contact_ids.blank? # rubocop:disable Style/IfUnlessModifier,Style/GuardClause
+      errors.add(:contacts, "can't be blank")
     end
   end
 end
