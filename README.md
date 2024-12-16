@@ -20,6 +20,7 @@ https://projectbuddy-2uah.onrender.com
   - 案件番号
   - 出願番号
   - 国コード
+  - 担当者
   - 社内担当者
   - 四法区分
   - 区分
@@ -62,7 +63,7 @@ https://projectbuddy-2uah.onrender.com
 [![Image from Gyazo](https://i.gyazo.com/41af8eccd1e3a2ab1acbeb74a0cacc9a.gif)](https://gyazo.com/41af8eccd1e3a2ab1acbeb74a0cacc9a)
 
 # 実装予定の機能
-現在、担当者登録機能を実装中です。<br>
+現在、代理人登録機能を実装中です。<br>
 以下の項目についても今後実装する予定です。
  - 出願人登録機能
  - 内容登録機能
