@@ -28,7 +28,7 @@
           </div>
           <div class="field attorney-field">
             <label class="field-label">代理人 <span class="required">必須</span></label>
-            <div class="field-input large"> <%# 代理人登録機能を実装後に対応 %></div>
+            <%= f.collection_select(:attorney_firm_ids, @attorney_firms, :id, :firm_name_jp, {include_blank: true}, {class: 'field-select large'}) %>
           </div>
           <div class="field country-code-field">
             <label class="field-label">国コード <span class="required">必須</span></label>
