@@ -27,7 +27,7 @@ class Case < ApplicationRecord
   validates :category_id, numericality: { other_than: 1, message: "can't be blank" }
   validates :status_id, numericality: { other_than: 1, message: "can't be blank" }
 
-  validate :must_have_one_contact
+  validate :must_have_required_fields
 
   private
 
@@ -37,9 +37,14 @@ class Case < ApplicationRecord
     end
   end
 
-  def must_have_one_contact
-    if contact_ids.blank? # rubocop:disable Style/IfUnlessModifier,Style/GuardClause
-      errors.add(:contacts, "can't be blank")
+  def must_have_required_fields
+    required_fields = {
+      contacts: contact_ids,
+      attorney_firms: attorney_firm_ids
+    }
+
+    required_fields.each do |attribute, value|
+      errors.add(attribute, "can't be blank") if value.blank?
     end
   end
 end
