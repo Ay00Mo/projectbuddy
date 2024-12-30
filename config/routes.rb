@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update]
   resources :cases, only: [:index, :new, :create, :show]
   resources :contacts, only: [:new, :create]
+  resources :attorney_firms, only: [:new, :create]
 end

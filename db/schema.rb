@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_12_05_224911) do
+ActiveRecord::Schema[7.0].define(version: 2024_12_20_114911) do
+  create_table "attorney_firms", charset: "utf8", force: :cascade do |t|
+    t.string "firm_name_jp", null: false
+    t.string "firm_name_en", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "case_attorney_firms", charset: "utf8", force: :cascade do |t|
+    t.bigint "case_id", null: false
+    t.bigint "attorney_firm_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["attorney_firm_id"], name: "index_case_attorney_firms_on_attorney_firm_id"
+    t.index ["case_id"], name: "index_case_attorney_firms_on_case_id"
+  end
+
   create_table "case_contacts", charset: "utf8", force: :cascade do |t|
     t.bigint "case_id", null: false
     t.bigint "contact_id", null: false
@@ -69,6 +85,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_12_05_224911) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "case_attorney_firms", "attorney_firms"
+  add_foreign_key "case_attorney_firms", "cases"
   add_foreign_key "case_contacts", "cases"
   add_foreign_key "case_contacts", "contacts"
   add_foreign_key "cases", "users"
