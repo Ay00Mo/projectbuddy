@@ -1,4 +1,5 @@
 class AttorneyFirmsController < ApplicationController
+  before_action :authenticate_user!
   def new
     @attorney_firm = AttorneyFirm.new
   end
