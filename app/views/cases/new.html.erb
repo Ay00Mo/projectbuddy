@@ -14,7 +14,7 @@
           </div>
           <div class="field applicant-field">
             <label class="field-label">出願人 <span class="required">必須</span></label>
-            <div class="field-input large"> <%# 出願人登録機能を実装後に対応 %></div>
+            <%= f.collection_select(:applicant_ids, @applicants, :id, :applicant_name_jp, {include_blank: true}, {class: 'field-select large'}) %>
           </div>
           <div class="field id-number-field">
             <label class="field-label">ID (自動)</label>
