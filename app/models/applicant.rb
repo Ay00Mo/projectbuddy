@@ -6,7 +6,7 @@ class Applicant < ApplicationRecord
     validates :applicant_name_jp
   end
   with_options presence: true,
-               format: { with: /\A[A-Z][a-zA-Z' -]+\z/, message: 'is invalid. Input valid English characters.' } do
+               format: { with: /\A[a-zA-Z\s.,]+\z/, message: 'is invalid. Input valid English characters.' } do
     validates :applicant_name_en
   end
 end
