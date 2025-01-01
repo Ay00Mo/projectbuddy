@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :cases, only: [:index, :new, :create, :show]
   resources :contacts, only: [:new, :create]
   resources :attorney_firms, only: [:new, :create]
+  resources :applicants, only: [:new, :create]
 end

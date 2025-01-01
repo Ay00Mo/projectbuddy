@@ -9,6 +9,8 @@ class Case < ApplicationRecord
   has_many :contacts, through: :case_contacts
   has_many :case_attorney_firms
   has_many :attorney_firms, through: :case_attorney_firms
+  has_many :case_applicants
+  has_many :applicants, through: :case_applicants
 
   VALID_CHARACTERS_REGEX = %r{\A[!\#$%&',\-./a-zA-Z0-9]+\z}
   validates :reference_number, presence: true,

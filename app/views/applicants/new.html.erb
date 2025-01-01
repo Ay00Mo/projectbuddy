@@ -1,0 +1,44 @@
+<%= render "shared/second-header"%>
+
+<%= form_with model: @applicant, class: 'registration-main', local: true do |f| %>
+<div class='form-wrap'>
+  <div class='form-header'>
+    <h1 class='form-header-text'>
+      出願人情報入力
+    </h1>
+  </div>
+
+  <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
+  <%= render 'shared/error_messages', model: f.object %>
+  <%# //インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
+
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">出願人名(全角)</label>
+      <span class="indispensable">必須</span>
+    </div>
+    <div class='input-name-wrap'>
+      <%= f.text_area :applicant_name_jp, class:"input-name", id:"applicant-name-jp", placeholder:"例) 株式会社テスト" %>
+    </div>
+    <p class='info-text'>
+      ※ カタカナは全角文字で入力してください。
+    </p>
+  </div>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">出願人名(半角英字)</label>
+      <span class="indispensable">必須</span>
+    </div>
+    <div class='input-name-wrap'>
+      <%= f.text_area :applicant_name_en, class:"input-name", id:"applicant-name-en", placeholder:"例) Kabushiki Kaisha Test" %>
+    </div>
+    <p class='info-text'>※ 半角英字で入力してください。</p>
+  </div>
+  <br>
+  <div class='register-btn'>
+    <%= f.submit "登録" ,class:"register-red-btn" %>
+  </div>
+</div>
+<% end %>
+
+<%= render "shared/second-footer"%>
