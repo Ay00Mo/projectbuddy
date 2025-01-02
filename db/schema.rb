@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_12_31_054354) do
+ActiveRecord::Schema[7.0].define(version: 2025_01_02_061137) do
   create_table "applicants", charset: "utf8", force: :cascade do |t|
     t.string "applicant_name_jp", null: false
     t.string "applicant_name_en", null: false
@@ -81,6 +81,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_12_31_054354) do
     t.string "first_name_jp", null: false
     t.string "last_name_en", null: false
     t.string "first_name_en", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "procedures", charset: "utf8", force: :cascade do |t|
+    t.string "procedure_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
