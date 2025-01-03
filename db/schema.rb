@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_01_02_061137) do
+ActiveRecord::Schema[7.0].define(version: 2025_01_03_044326) do
   create_table "applicants", charset: "utf8", force: :cascade do |t|
     t.string "applicant_name_jp", null: false
     t.string "applicant_name_en", null: false
@@ -50,6 +50,15 @@ ActiveRecord::Schema[7.0].define(version: 2025_01_02_061137) do
     t.datetime "updated_at", null: false
     t.index ["case_id"], name: "index_case_contacts_on_case_id"
     t.index ["contact_id"], name: "index_case_contacts_on_contact_id"
+  end
+
+  create_table "case_procedures", charset: "utf8", force: :cascade do |t|
+    t.bigint "case_id", null: false
+    t.bigint "procedure_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["case_id"], name: "index_case_procedures_on_case_id"
+    t.index ["procedure_id"], name: "index_case_procedures_on_procedure_id"
   end
 
   create_table "cases", charset: "utf8", force: :cascade do |t|
@@ -113,6 +122,8 @@ ActiveRecord::Schema[7.0].define(version: 2025_01_02_061137) do
   add_foreign_key "case_attorney_firms", "cases"
   add_foreign_key "case_contacts", "cases"
   add_foreign_key "case_contacts", "contacts"
+  add_foreign_key "case_procedures", "cases"
+  add_foreign_key "case_procedures", "procedures"
   add_foreign_key "cases", "users"
   add_foreign_key "cases", "users", column: "internal_contact_id"
 end
