@@ -60,7 +60,7 @@
           </div>
           <div class="field procedure-field">
             <label class="field-label">内容 <span class="required">必須</span></label>
-            <div class="field-input large"> <%# 内容登録機能を実装後に対応 %></div>
+            <%= f.collection_select(:procedure_ids, @procedures, :id, :procedure_name, {include_blank: true}, {class: 'field-select large'}) %>
           </div>
           <div class="field status-field">
             <label class="field-label">状況 <span class="required">必須</span></label>
