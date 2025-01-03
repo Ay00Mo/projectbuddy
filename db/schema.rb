@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_01_03_044326) do
+ActiveRecord::Schema[7.0].define(version: 2025_01_03_062626) do
   create_table "applicants", charset: "utf8", force: :cascade do |t|
     t.string "applicant_name_jp", null: false
     t.string "applicant_name_en", null: false
@@ -98,6 +98,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_01_03_044326) do
     t.string "procedure_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["procedure_name"], name: "index_procedures_on_procedure_name", unique: true
   end
 
   create_table "users", charset: "utf8", force: :cascade do |t|

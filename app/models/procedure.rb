@@ -4,4 +4,5 @@ class Procedure < ApplicationRecord
 
   validates :procedure_name, presence: true,
                              format: { with: /\A[ぁ-んァ-ヶ一-龥々ーa-zA-Z0-9]+\z/, message: 'is invalid. Only full-width Japanese characters, alphabets, and numbers are allowed.' }
+  validates_uniqueness_of :procedure_name, message: 'already exists. Please choose another name.'
 end
