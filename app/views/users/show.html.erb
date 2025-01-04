@@ -30,6 +30,7 @@
       <thead>
         <tr>
           <th>案件番号</th>
+          <th>国名</th>
           <th>区分</th>
           <th>内容</th>
           <th>状況</th>
@@ -42,12 +43,13 @@
         <% @unprocessed_cases.each do |single_case| %>
           <tr>
             <td><%= link_to single_case.reference_number, case_path(single_case), class: "case-link" %></td>
+            <td><%= single_case.country_code %></td> 
             <td><%= single_case.category.name %></td>
-            <td></td> <!-- 内容登録機能実装後設定 -->
+            <td><%= single_case.procedures.map(&:procedure_name).join(', ') %></td> 
             <td><%= single_case.status.name %></td>
             <td><%= single_case.deadline %></td>
             <td><%= single_case.absolute_deadline %></td>
-            <td></td> <!-- 担当者登録機能実装後に設定 -->
+            <td><%= single_case.contacts.map(&:full_name).join(', ') %></td>
           </tr>
         <% end %>
       </tbody>
@@ -61,6 +63,7 @@
       <thead>
         <tr>
           <th>案件番号</th>
+          <th>国名</th>
           <th>区分</th>
           <th>内容</th>
           <th>状況</th>
@@ -73,12 +76,13 @@
         <% @waiting_report_cases.each do |single_case| %>
           <tr>
             <td><%= link_to single_case.reference_number, case_path(single_case), class: "case-link" %></td>
+            <td><%= single_case.country_code %></td>
             <td><%= single_case.category.name %></td>
-            <td></td> <!-- 内容の欄を一旦空白にします -->
+            <td><%= single_case.procedures.map(&:procedure_name).join(', ') %></td> 
             <td><%= single_case.status.name %></td>
             <td><%= single_case.deadline %></td>
             <td><%= single_case.absolute_deadline %></td>
-            <td></td> <!-- 担当者登録機能実装後に設定 -->
+            <td><%= single_case.contacts.map(&:full_name).join(', ') %></td>
           </tr>
         <% end %>
       </tbody>

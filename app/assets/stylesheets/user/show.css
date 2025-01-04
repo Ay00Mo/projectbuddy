@@ -60,10 +60,8 @@
 
 .case-table tr:nth-child(even) {
   background-color: #f9f9f9;
-}
 
-.case-link {
-  text-decoration: none; /* リンクの下線を取り除く */
+}.case-link { text-decoration: underline;
   color: inherit; /* テキストの色を親要素から継承する */
 }
 

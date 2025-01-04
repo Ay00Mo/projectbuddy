@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   resources :contacts, only: [:new, :create]
   resources :attorney_firms, only: [:new, :create]
   resources :applicants, only: [:new, :create]
+  resources :procedures, only: [:new, :create]
 end
