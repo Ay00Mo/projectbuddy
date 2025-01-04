@@ -26,7 +26,11 @@
         </div>
         <div class="field applicant-field">
           <label class="field-label">出願人</label>
-          <div class="field-input large"> <%# 出願人登録機能を実装後に対応 %></div>
+          <div class="case-detail-box"> 
+            <% @applicants.each do |applicant| %>
+              <p><%= applicant.applicant_name_jp %></p>
+            <% end %> 
+          </div>
         </div>
         <div class="field id-number-field">
           <label class="field-label">ID (自動)</label>
@@ -40,7 +44,11 @@
         </div>
         <div class="field attorney-field">
           <label class="field-label">代理人</label>
-          <div class="field-input large"> <%# 代理人登録機能を実装後に対応 %></div>
+          <div class="case-detail-box"> 
+            <% @attorney_firms.each do |attorney_firm| %>
+              <p><%= attorney_firm.firm_name_jp %></p>
+            <% end %> 
+          </div>
         </div>
         <div class="field country-code-field">
           <label class="field-label">国コード</label>
@@ -50,11 +58,15 @@
       <div class="form-row">
         <div class="field client-contact-field">
           <label class="field-label">担当者</label>
-          <div class="field-input large"> <%# 担当者登録機能を実装後に対応 %></div>
+          <div class="case-detail-box"> 
+            <% @contacts.each do |contact| %>
+              <p><%= contact.full_name %></p>
+            <% end %> 
+          </div>
         </div>
         <div class="field internal-contact-field">
           <label class="field-label">社内担当者 </label>
-          <div class="field-input large"> <%# 担当者登録機能を実装後に対応 %></div>
+          <div class="case-detail-box"> <%= @case.internal_contact.full_name %></div>
         </div>
         <div class="field law-category-field">
           <label class="field-label">四法区分 </label>
@@ -72,7 +84,11 @@
         </div>
         <div class="field procedure-field">
           <label class="field-label">内容 </label>
-          <div class="field-input large"> <%# 内容登録機能を実装後に対応 %></div>
+          <div class="case-detail-box"> 
+            <% @procedures.each do |procedure| %>
+              <p><%= procedure.procedure_name %></p>
+            <% end %> 
+          </div>
         </div>
         <div class="field status-field">
           <label class="field-label">状況 </label>

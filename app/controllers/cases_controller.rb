@@ -20,6 +20,10 @@ class CasesController < ApplicationController
 
   def show
     @case = Case.find(params[:id])
+    @applicants = @case.applicants
+    @attorney_firms = @case.attorney_firms
+    @contacts = @case.contacts
+    @procedures = @case.procedures
   end
 
   private
