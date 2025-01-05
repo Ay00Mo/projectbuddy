@@ -26,6 +26,13 @@ class CasesController < ApplicationController
     @procedures = @case.procedures
   end
 
+  def search
+    # Ransackの検索オブジェクトを作成
+    @q = Case.ransack(params[:q])
+    # 検索結果を取得
+    @cases = @q.result(distinct: true)
+  end
+
   private
 
   def set_form_data
