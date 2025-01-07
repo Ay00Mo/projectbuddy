@@ -15,4 +15,12 @@ class Contact < ApplicationRecord
   def full_name
     "#{last_name_jp} #{first_name_jp}"
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    %w[created_at first_name_en first_name_jp id last_name_en last_name_jp updated_at]
+  end
+
+  def self.search_full_name(name)
+    where("CONCAT(first_name_jp, ' ', last_name_jp) LIKE ?", "%#{name}%")
+  end
 end

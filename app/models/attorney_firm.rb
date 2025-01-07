@@ -14,6 +14,10 @@ class AttorneyFirm < ApplicationRecord
     validates :firm_name_en
   end
 
+  def self.ransackable_attributes(auth_object = nil)
+    %w[id firm_name_en firm_name_jp created_at updated_at]
+  end
+
   private
 
   def normalize_firm_names
