@@ -10,8 +10,9 @@ Rails.application.routes.draw do
 
   resources :cases, only: [:index, :new, :create, :show] do
     collection do
-      get 'search' # 検索アクションのルート
+      get 'search_form', as: :search_form  # 検索フォームページ
+      get 'search_results', as: :search_results # 検索結果ページ
     end
-  end
+  end  
 end
 
