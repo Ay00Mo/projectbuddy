@@ -1,0 +1,56 @@
+/* search_results用のCSS */
+.list-container {
+  margin: 20px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.list-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #3ccace;
+  padding-bottom: 10px;
+}
+
+.case-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.case-table th, .case-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.case-table th {
+  background-color: #f8f8f8;
+  font-weight: bold;
+}
+
+.case-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.case-link {
+  text-decoration: underline;
+  color: inherit;
+  transition: color 0.2s ease;
+}
+
+.case-link:hover {
+  color: #3ccace;
+}
+
+/* メディアクエリでレスポンシブ対応 */
+@media (max-width: 768px) {
+  .case-table th, .case-table td {
+    padding: 8px;
+  }
+
+  .search-btn {
+    width: 100%;
+  }
+}
