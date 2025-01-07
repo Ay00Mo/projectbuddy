@@ -42,7 +42,7 @@
         </li>
       <% end %>
       <li class='list'>
-        <%= image_tag "search2.png", class:"list-pict" %>
+        <%= link_to image_tag("search2.png", class:"list-pict"), search_form_cases_path, class: "search-link" %>
         <span class='reason-list-number'>3</span>
         <h3 class='reason-list-text'>
           <span class='reason-list-blue-text'>案件詳細検索</span>
