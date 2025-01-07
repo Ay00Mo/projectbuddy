@@ -1,6 +1,6 @@
 class CasesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_form_data, only: [:new, :create]
+  before_action :set_form_data, only: [:new, :create, :search_form, :search_results]
 
   def index
   end
@@ -24,6 +24,24 @@ class CasesController < ApplicationController
     @attorney_firms = @case.attorney_firms
     @contacts = @case.contacts
     @procedures = @case.procedures
+  end
+
+  def search_form
+    # 検索フォームページ用
+    @q = Case.ransack(params[:q])
+    @applicants = Applicant.all
+    @attorney_firms = AttorneyFirm.all
+  end
+
+  def search_results
+    @q = Case.ransack(params[:q])
+
+    # 範囲検索の場合
+    if params[:q] # rubocop:disable Style/ConditionalAssignment
+      @cases = @q.result(distinct: true)
+    else
+      @cases = []
+    end
   end
 
   private

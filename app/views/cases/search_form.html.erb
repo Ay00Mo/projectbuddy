@@ -1,0 +1,144 @@
+<%= render "shared/third-header" %>
+
+<div class="search-container">
+  <h1>案件詳細検索</h1>
+  <div class="search-contents">
+    <%= search_form_for @q, url: search_results_cases_path, method: :get, html: { id: "search_form" } do |f| %>
+      <div class="form-row">
+        <div class="field">
+          <%= f.label :reference_number_cont, "案件番号", class: "field-label" %>
+          <%= f.text_field :reference_number_cont, class: "field-input" %>
+        </div>
+        <div class="field">
+          <%= f.label :country_code_eq, "国コード", class: "field-label" %>
+          <%= f.text_field :country_code_eq, class: "field-input" %>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <%= f.label :applicants_id_in, "出願人", class: "field-label" %>
+          <%= f.collection_select(:applicants_id_in, @applicants, :id, :applicant_name_jp, { include_blank: true }, class: "field-select") %>
+        </div>
+        <div class="field">
+          <%= f.label :application_number_cont, "出願番号", class: "field-label" %>
+          <%= f.text_field :application_number_cont, class: "field-input" %>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <%= f.label :contacts_id_in, "担当者", class: "field-label" %>
+          <%= f.collection_select(:contacts_id_in, @contacts, :id, :full_name, { include_blank: true }, class: "field-select") %>
+        </div>
+        <div class="field">
+          <%= f.label :internal_contact_id_in, "社内担当者", class: "field-label" %>
+          <%= f.collection_select(:internal_contact_id_in, @users, :id, :full_name, { include_blank: true }, class: "field-select") %>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <%= f.label :attorney_firms_id_in, "代理人", class: "field-label" %>
+          <%= f.collection_select(:attorney_firms_id_in, @attorney_firms, :id, :firm_name_jp, { include_blank: true }, class: "field-select") %>
+        </div>
+        <div class="field">
+          <%= f.label :remarks_cont, "備考", class: "field-label" %>
+          <%= f.text_field :remarks_cont, class: "field-input" %>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <%= f.label :beginning_date_gteq, "起算日（開始）", class: "field-label" %>
+          <%= f.date_field :beginning_date_gteq, class: "field-input" %>
+        </div>
+        <div class="field">
+          <%= f.label :beginning_date_lteq, "起算日（終了）", class: "field-label" %>
+          <%= f.date_field :beginning_date_lteq, class: "field-input" %>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <%= f.label :deadline_gteq, "期限日（開始）", class: "field-label" %>
+          <%= f.date_field :deadline_gteq, class: "field-input" %>
+        </div>
+        <div class="field">
+          <%= f.label :deadline_lteq, "期限日（終了）", class: "field-label" %>
+          <%= f.date_field :deadline_lteq, class: "field-input" %>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <%= f.label :absolute_deadline_gteq, "法定期限日（開始）", class: "field-label" %>
+          <%= f.date_field :absolute_deadline_gteq, class: "field-input" %>
+        </div>
+        <div class="field">
+          <%= f.label :absolute_deadline_lteq, "法定期限日（終了）", class: "field-label" %>
+          <%= f.date_field :absolute_deadline_lteq, class: "field-input" %>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <%= f.label :request_date_gteq, "依頼日（開始）", class: "field-label" %>
+          <%= f.date_field :request_date_gteq, class: "field-input" %>
+        </div>
+        <div class="field">
+          <%= f.label :request_date_lteq, "依頼日（終了）", class: "field-label" %>
+          <%= f.date_field :request_date_lteq, class: "field-input" %>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <%= f.label :delivery_date_gteq, "納品日（開始）", class: "field-label" %>
+          <%= f.date_field :delivery_date_gteq, class: "field-input" %>
+        </div>
+        <div class="field">
+          <%= f.label :delivery_date_lteq, "納品日（終了）", class: "field-label" %>
+          <%= f.date_field :delivery_date_lteq, class: "field-input" %>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <%= f.label :response_date_gteq, "回答日（開始）", class: "field-label" %>
+          <%= f.date_field :response_date_gteq, class: "field-input" %>
+        </div>
+        <div class="field">
+          <%= f.label :response_date_lteq, "回答日（終了）", class: "field-label" %>
+          <%= f.date_field :response_date_lteq, class: "field-input" %>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <%= f.label :instruction_date_gteq, "指示日（開始）", class: "field-label" %>
+          <%= f.date_field :instruction_date_gteq, class: "field-input" %>
+        </div>
+        <div class="field">
+          <%= f.label :instruction_date_lteq, "指示日（終了）", class: "field-label" %>
+          <%= f.date_field :instruction_date_lteq, class: "field-input" %>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <%= f.label :filing_date_gteq, "提出日（開始）", class: "field-label" %>
+          <%= f.date_field :filing_date_gteq, class: "field-input" %>
+        </div>
+        <div class="field">
+          <%= f.label :filing_date_lteq, "提出日（終了）", class: "field-label" %>
+          <%= f.date_field :filing_date_lteq, class: "field-input" %>
+        </div>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "検索", class: "search-btn" %>
+      </div>
+    <% end %>
+  </div>
+</div>

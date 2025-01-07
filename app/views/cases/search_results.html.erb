@@ -1,0 +1,34 @@
+<%= render "shared/third-header" %>
+
+<div class="list-container">
+  <h1 class="list-title">検索結果</h1>
+  <table class="case-table">
+    <thead>
+      <tr>
+        <th>案件番号</th>
+        <th>出願人</th>
+        <th>出願番号</th>
+        <th>国コード</th>
+        <th>備考</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @cases.any? %>
+        <% @cases.each do |case_item| %>
+          <tr>
+            <td><%= link_to case_item.reference_number, case_path(case_item), class: "case-link" %></td>
+            <td><%= case_item.applicants.map(&:applicant_name_jp).join(", ") %></td>
+            <td><%= case_item.application_number %></td>
+            <td><%= case_item.country_code %></td>
+            <td><%= case_item.remarks %></td>
+          </tr>
+        <% end %>
+      <% else %>
+        <tr>
+          <td colspan="5">検索結果が見つかりませんでした。</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
