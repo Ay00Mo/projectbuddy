@@ -1,6 +1,6 @@
 class CasesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_form_data, only: [:new, :create, :search_form, :search_results]
+  before_action :set_form_data, only: [:new, :create, :search_form, :search_results, :edit]
 
   def index
   end
@@ -42,6 +42,10 @@ class CasesController < ApplicationController
     else
       @cases = []
     end
+  end
+
+  def edit
+    @case = Case.find(params[:id])
   end
 
   private
