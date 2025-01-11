@@ -1,0 +1,134 @@
+<%# ヘッダー %>
+<div class="details-container">
+  <div class="details-header">
+    <div class="details-header-top">
+      <h2 class="details-title">案件詳細</h2>
+    </div>
+    <div class="details-header-bottom">
+      <button class="button add-record-button">レコード追加</button>
+      <button class="button copy-record-button">レコード複製</button>
+      <button class="button edit-record-button">
+        <%= link_to 'レコード修正', '#', class: 'edit-link' %>
+      </button>
+      <button class="button delete-record-button">レコード削除</button>
+      <span class="pin-number-container">
+        <label for="pin">PIN:</label>
+        <input type="password" id="pin" name="pin_number">
+      </span>
+      <button class="button close-detail-button" id="close-button" data-user-id="<%= current_user.id %>">閉じる</button>
+    </div>
+  </div>
+
+  <div class="details-contents">
+    <%= form_with model: @case, local: true do |f| %>
+      <%= render 'shared/error_messages', model: f.object %>
+
+      <%# 上部内容 %>
+      <div class="upper-content">
+        <div class="form-row">
+          <div class="field reference-number-field">
+            <label class="field-label">案件番号 <span class="required">必須</span></label>
+            <%= f.text_area :reference_number, class:"field-input large", id:"reference-number" %>
+          </div>
+          <div class="field applicant-field">
+            <label class="field-label">出願人 <span class="required">必須</span></label>
+            <%= f.collection_select(:applicant_ids, @applicants, :id, :applicant_name_jp, {include_blank: true}, {class: 'field-select large'}) %>
+          </div>
+          <div class="field id-number-field">
+            <label class="field-label">ID (自動)</label>
+            <div class="field-input large" id="id-number"><%= @case.id %></div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field application-number-field">
+            <label class="field-label">出願番号 <span class="required">必須</span></label>
+            <%= f.text_area :application_number, class:"field-input large", id:"application-number" %>
+          </div>
+          <div class="field attorney-field">
+            <label class="field-label">代理人 <span class="required">必須</span></label>
+            <%= f.collection_select(:attorney_firm_ids, @attorney_firms, :id, :firm_name_jp, {include_blank: true}, {class: 'field-select large'}) %>
+          </div>
+          <div class="field country-code-field">
+            <label class="field-label">国コード <span class="required">必須</span></label>
+            <%= f.text_area :country_code, class:"field-input large", id:"country-code", placeholder:"英字2文字 例) US" %>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field client-contact-field">
+            <label class="field-label">担当者 <span class="required">必須</span></label>
+            <%= f.collection_select(:contact_ids, @contacts, :id, :full_name, {include_blank: true}, {class: 'field-select large'})%>
+          </div>
+          <div class="field internal-contact-field">
+            <label class="field-label">社内担当者 <span class="required">必須</span></label>
+            <%= f.collection_select(:internal_contact_id, @users, :id, :full_name, {include_blank: true}, {class: 'field-select large'}) %>
+          </div>
+          <div class="field law-category-field">
+            <label class="field-label">四法区分 <span class="required">必須</span></label>
+            <%= f.collection_select(:law_category_id, LawCategory.all, :id, :name, {}, {class:"field-select large", id:"law-category"}) %>
+          </div>
+        </div>
+      </div>
+
+      <%# 下部内容 %>
+      <div class="lower-content">
+        <div class="lower-content-left">
+          <div class="field category-field">
+            <label class="field-label">区分 <span class="required">必須</span></label>
+            <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"field-select large", id:"category"}) %>
+          </div>
+          <div class="field procedure-field">
+            <label class="field-label">内容 <span class="required">必須</span></label>
+            <%= f.collection_select(:procedure_ids, @procedures, :id, :procedure_name, {include_blank: true}, {class: 'field-select large'}) %>
+          </div>
+          <div class="field status-field">
+            <label class="field-label">状況 <span class="required">必須</span></label>
+            <%= f.collection_select(:status_id, Status.all, :id, :name, {}, {class:"field-select large", id:"status"}) %>
+          </div>
+          <div class="field date-field">
+            <label class="field-label">起算日 <span class="required">必須</span></label>
+            <%= f.date_field :beginning_date, class: 'field-date-input large', id: 'beginning-date' %>
+          </div>
+          <div class="field date-field">
+            <label class="field-label">期限日 <span class="required">必須</span></label>
+            <%= f.date_field :deadline, class: 'field-date-input large', id: 'deadline' %>
+          </div>
+          <div class="field date-field">
+            <label class="field-label">法定期限日 <span class="required">必須</span></label>
+            <%= f.date_field :absolute_deadline, class: 'field-date-input large', id: 'absolute-deadline' %>
+          </div>
+          <div class="field date-field">
+            <label class="field-label">依頼日</label>
+            <%= f.date_field :request_date, class: 'field-date-input large', id: 'request-date' %>
+          </div>
+          <div class="field date-field">
+            <label class="field-label">納品日</label>
+            <%= f.date_field :delivery_date, class: 'field-date-input large', id: 'delivery-date' %>
+          </div>
+          <div class="field date-field">
+            <label class="field-label">回答日</label>
+            <%= f.date_field :response_date, class: 'field-date-input large', id: 'response-date' %>
+          </div>
+          <div class="field date-field">
+            <label class="field-label">指示日</label>
+            <%= f.date_field :instruction_date, class: 'field-date-input large', id: 'instruction-date' %>
+          </div>
+          <div class="field date-field">
+            <label class="field-label">提出日</label>
+            <%= f.date_field :filing_date, class: 'field-date-input large', id: 'filing-date' %>
+          </div>
+        </div>
+        <div class="lower-content-right">
+          <div class="remarks-field">
+            <label class="field-right-label">備考</label>
+            <%= f.text_area :remarks, class:"field-input remarks", id:"remarks" %>
+          </div>
+        </div>
+      </div>
+      <div class="bottom-content">
+        <div class='register-btn'>
+          <%= f.submit "更新", class:"register-red-btn" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
