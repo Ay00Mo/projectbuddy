@@ -13,6 +13,10 @@ Rails.application.routes.draw do
       get 'search_form', as: :search_form  # 検索フォームページ
       get 'search_results', as: :search_results # 検索結果ページ
     end
+
+    member do
+      post 'check_pin'  # PINチェック用のアクション
+    end
   end  
 end
 

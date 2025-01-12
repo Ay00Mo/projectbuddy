@@ -1,6 +1,7 @@
 class CasesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_form_data, only: [:new, :create, :search_form, :search_results, :edit]
+  before_action :set_case, only: [:show, :edit, :update, :check_pin]
 
   def index
   end
@@ -44,8 +45,16 @@ class CasesController < ApplicationController
     end
   end
 
-  def edit
-    @case = Case.find(params[:id])
+  def check_pin
+    if current_user.user_type == 1 || @case.internal_contact == current_user
+      if params[:pin_number] == current_user.pin_number
+        redirect_to edit_case_path(@case), notice: '修正画面に遷移しました。'
+      else
+        redirect_to case_path(@case), alert: 'PINが一致しません。'
+      end
+    else
+      redirect_to case_path(@case), alert: '権限がありません。'
+    end
   end
 
   private
@@ -56,6 +65,10 @@ class CasesController < ApplicationController
     @attorney_firms = AttorneyFirm.all
     @applicants = Applicant.all
     @procedures = Procedure.all
+  end
+
+  def set_case
+    @case = Case.find(params[:id])
   end
 
   def case_params
