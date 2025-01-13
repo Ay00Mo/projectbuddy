@@ -5,17 +5,26 @@
       <h2 class="details-title">案件詳細</h2>
     </div>
     <div class="details-header-bottom">
-      <button class="button add-record-button">レコード追加</button>
+      <button class="button add-record-button">
+        <%= link_to '案件登録', new_case_path, class: 'new-case-link' %>
+      </button>
       <button class="button copy-record-button">レコード複製</button>
-      <button class="button edit-record-button">レコード修正</button>
-      <button class="button delete-record-button">レコード削除</button>
-      <span class="pin-number-container">
-        <label for="pin">PIN:</label>
-        <input type="password" id="pin" name="pin_number">
-      </span>
+
+      <% if @case.internal_contact == current_user || current_user.user_type == 1 %>
+        <%= form_with url: check_pin_case_path(@case), method: :post, local: true do |f| %>
+          <%= f.submit "レコード修正", class: "button edit-record-button" %>
+          <button class="button delete-record-button">レコード削除</button>
+          <span class="pin-number-container">
+            <label for="pin">PIN:</label>
+            <%= f.password_field :pin_number, class: "input-pin", placeholder: "4桁のPINを入力" %>
+          </span>
+        <% end %>
+      <% end %>
+
       <button class="button close-detail-button" id="close-button" data-user-id="<%= current_user.id %>">閉じる</button>
     </div>
   </div>
+
   <div class="details-contents">
     <%# 上部内容 %>
     <div class="upper-content">

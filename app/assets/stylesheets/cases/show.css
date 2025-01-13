@@ -19,11 +19,21 @@
 
 .details-header-bottom {
   display: flex;
-  justify-content: space-around;
   margin-top: 10px;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .button {
+  font-size: 16px; /* 全ボタンに適用 */
+  font-family: Arial, sans-serif; /* 任意のフォント */
+}
+
+.button a:visited {
+  color: white; /* クリック後（visited）の文字色を白に設定 */
+}
+
+.add-record-button {
   cursor: pointer;
   background-color: #3ccace;
   border: none;
@@ -31,6 +41,55 @@
   padding: 10px 20px;
   border-radius: 5px;
   text-align: center;
+  margin-left: 15px;
+}
+
+.copy-record-button {
+  cursor: pointer;
+  background-color: #3ccace;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-align: center;
+  margin-left: 15px;
+}
+
+.edit-record-button {
+  cursor: pointer;
+  background-color: #3ccace;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-align: center;
+  margin-left: 15px;
+  margin-right: 20px;
+}
+
+.delete-record-button {
+  cursor: pointer;
+  background-color: #3ccace;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-align: center;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.pin-number-container {
+  cursor: pointer;
+  background-color: #3ccace;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-align: center;
+  margin-left: 15px;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
 }
 
 .pin-number-container input {
@@ -38,6 +97,16 @@
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+
+.close-detail-button {
+  cursor: pointer;
+  background-color: #3ccace;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-align: center;
 }
 
 .button:hover {
