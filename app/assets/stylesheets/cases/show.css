@@ -27,6 +27,7 @@
 .button {
   font-size: 16px; /* 全ボタンに適用 */
   font-family: Arial, sans-serif; /* 任意のフォント */
+  width: 150px;
 }
 
 .button a:visited {
