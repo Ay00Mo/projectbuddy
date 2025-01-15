@@ -1,6 +1,6 @@
 class CasesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_form_data, only: [:new, :create, :search_form, :search_results, :edit]
+  before_action :set_form_data, only: [:new, :create, :search_form, :search_results, :edit, :update]
   before_action :set_case, only: [:show, :edit, :update, :check_pin]
 
   def index
@@ -27,6 +27,15 @@ class CasesController < ApplicationController
     @procedures = @case.procedures
   end
 
+  def update
+    @case = Case.find(params[:id])
+    if @case.update(case_params)
+      redirect_to user_path(current_user), notice: '案件が正常に作成されました。'
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   def search_form
     # 検索フォームページ用
     @q = Case.ransack(params[:q])
@@ -46,8 +55,10 @@ class CasesController < ApplicationController
   end
 
   def check_pin
+    # ユーザー種別がadmin(1)またはinternal_contactが一致する場合
     if current_user.user_type == 1 || @case.internal_contact == current_user
-      if params[:pin_number] == current_user.pin_number
+      # PIN番号が一致する場合
+      if params[:pin_number].to_i == current_user.pin_number
         redirect_to edit_case_path(@case), notice: '修正画面に遷移しました。'
       else
         redirect_to case_path(@case), alert: 'PINが一致しません。'
