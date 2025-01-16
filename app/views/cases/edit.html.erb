@@ -2,19 +2,14 @@
 <div class="details-container">
   <div class="details-header">
     <div class="details-header-top">
-      <h2 class="details-title">案件詳細</h2>
+      <h2 class="details-title">案件修正</h2>
     </div>
     <div class="details-header-bottom">
-      <button class="button add-record-button">レコード追加</button>
-      <button class="button copy-record-button">レコード複製</button>
-      <button class="button edit-record-button">
-        <%= link_to 'レコード修正', '#', class: 'edit-link' %>
-      </button>
-      <button class="button delete-record-button">レコード削除</button>
-      <span class="pin-number-container">
-        <label for="pin">PIN:</label>
-        <input type="password" id="pin" name="pin_number">
-      </span>
+      <button class="button add-record-button"></button>
+      <button class="button copy-record-button"></button>
+      <button class="button edit-record-button"></button>
+      <button class="button delete-record-button"></button>
+      <span class="pin-number-container"></span>
       <button class="button close-detail-button" id="close-button" data-user-id="<%= current_user.id %>">閉じる</button>
     </div>
   </div>

@@ -19,6 +19,10 @@
             <%= f.password_field :pin_number, class: "input-pin", placeholder: "4桁のPINを入力" %>
           </span>
         <% end %>
+      <% else %>
+        <button class="button edit-record-button"></button>
+        <button class="button delete-record-button"></button>
+        <span class="pin-number-container"></span>
       <% end %>
 
       <button class="button close-detail-button" id="close-button" data-user-id="<%= current_user.id %>">閉じる</button>
