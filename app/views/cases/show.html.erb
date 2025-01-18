@@ -13,7 +13,7 @@
       <% if @case.internal_contact == current_user || current_user.user_type == 1 %>
         <%= form_with url: check_pin_case_path(@case), method: :post, local: true do |f| %>
           <%= f.submit "レコード修正", class: "button edit-record-button" %>
-          <button class="button delete-record-button">レコード削除</button>
+          <%= f.submit "レコード削除", class: "button delete-record-button" %>
           <span class="pin-number-container">
             <label for="pin">PIN:</label>
             <%= f.password_field :pin_number, class: "input-pin", placeholder: "4桁のPINを入力" %>
