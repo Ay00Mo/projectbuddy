@@ -5,13 +5,13 @@ class Case < ApplicationRecord
   belongs_to :category
   belongs_to :status
   belongs_to :internal_contact, class_name: 'User'
-  has_many :case_contacts
+  has_many :case_contacts, dependent: :destroy
   has_many :contacts, through: :case_contacts
-  has_many :case_attorney_firms
+  has_many :case_attorney_firms, dependent: :destroy
   has_many :attorney_firms, through: :case_attorney_firms
-  has_many :case_applicants
+  has_many :case_applicants, dependent: :destroy
   has_many :applicants, through: :case_applicants
-  has_many :case_procedures
+  has_many :case_procedures, dependent: :destroy
   has_many :procedures, through: :case_procedures
 
   VALID_CHARACTERS_REGEX = %r{\A[!\#$%&',\-./a-zA-Z0-9]+\z}
@@ -33,7 +33,7 @@ class Case < ApplicationRecord
 
   validate :must_have_required_fields
 
-  def self.ransackable_attributes(auth_object = nil)
+  def self.ransackable_attributes(_auth_object = nil)
     %w[
       absolute_deadline
       application_number
@@ -59,7 +59,7 @@ class Case < ApplicationRecord
   end
 
   # 出願人や代理人など関連するモデルの検索も可能にする場合
-  def self.ransackable_associations(auth_object = nil)
+  def self.ransackable_associations(_auth_object = nil)
     %w[applicants attorney_firms contacts procedures users]
   end
 

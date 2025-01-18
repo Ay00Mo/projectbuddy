@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :applicants, only: [:new, :create]
   resources :procedures, only: [:new, :create]
 
-  resources :cases, only: [:index, :new, :create, :show, :edit, :update] do
+  resources :cases do
     collection do
       get 'search_form', as: :search_form  # 検索フォームページ
       get 'search_results', as: :search_results # 検索結果ページ

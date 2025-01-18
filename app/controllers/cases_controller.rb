@@ -30,7 +30,7 @@ class CasesController < ApplicationController
   def update
     @case = Case.find(params[:id])
     if @case.update(case_params)
-      redirect_to user_path(current_user), notice: '案件が正常に作成されました。'
+      redirect_to case_path(@case), notice: '案件が正常に作成されました。'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -59,7 +59,15 @@ class CasesController < ApplicationController
     if current_user.user_type == 1 || @case.internal_contact == current_user
       # PIN番号が一致する場合
       if params[:pin_number].to_i == current_user.pin_number
-        redirect_to edit_case_path(@case), notice: '修正画面に遷移しました。'
+        case params[:commit]
+        when 'レコード修正'
+          redirect_to edit_case_path(@case), notice: '修正画面に遷移しました。'
+        when 'レコード削除'
+          @case.destroy
+          redirect_to cases_path, notice: '案件を削除しました。'
+        else
+          redirect_to case_path(@case), alert: '無効な操作です。'
+        end
       else
         redirect_to case_path(@case), alert: 'PINが一致しません。'
       end
