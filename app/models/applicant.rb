@@ -10,7 +10,7 @@ class Applicant < ApplicationRecord
     validates :applicant_name_en
   end
 
-  def self.ransackable_attributes(auth_object = nil)
+  def self.ransackable_attributes(_auth_object = nil)
     %w[applicant_name_en applicant_name_jp created_at id updated_at]
   end
 end

@@ -16,7 +16,7 @@ class Contact < ApplicationRecord
     "#{last_name_jp} #{first_name_jp}"
   end
 
-  def self.ransackable_attributes(auth_object = nil)
+  def self.ransackable_attributes(_auth_object = nil)
     %w[created_at first_name_en first_name_jp id last_name_en last_name_jp updated_at]
   end
 
